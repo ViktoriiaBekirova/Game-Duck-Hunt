@@ -1,0 +1,276 @@
+html, body {
+	height: 100%;
+}
+.container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: #3cbcfc;
+}
+.text {
+	position: absolute;
+	margin-top: 200px;
+	width: 100%;
+	font-family: Monotype Corsiva;
+	font-size: 40px;
+	font-weight: bold;
+	color: #800080;
+	border: 1px solid #800080;
+	background-color: #cccccc;
+	text-align: center;
+}
+.text1, .text2, .text3 {
+	display: none;
+}
+.sp {
+	background-image: url('../img/sprite.png');
+	background-repeat: no-repeat;
+	background-position: 9999px 9999px;
+}
+.sp2 {
+	background-image: url('../img/sprites.png');
+	background-repeat: no-repeat;
+	background-position: 9999px 9999px;
+}
+* {
+	cursor: url('../img/pr2.png'), crosshair; /* меняем курсор*/
+}
+.background { /* стили для фона*/
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 650px;
+	background-image: url('../img/stage.png');
+}
+.dog { /* стили для собаки*/
+	position: absolute;
+	left: 5px;
+	bottom: 100px;
+	width: 107px;
+	height: 80px;
+	transform: translate(0px, 0px);
+}
+.dog_walk { /* подстиль для собаки*/
+	transition: transform 8s linear;
+	animation-name: dog-walk;
+	animation-duration: .6s; /* длительность анимации*/
+	animation-iteration-count: infinite;/*анимация повторяется бесконечно*/
+	animation-timing-function: steps(1,end); /* ступечатая ф-я 1 шаг*/
+	animation-delay: 0s  /* время ожидания анимации*/
+}
+ .dog_jump {/* подстиль для собаки*/
+	width: 107px;
+	height: 96px;
+ 	transition: transform 8s linear;
+ 	animation-name: dog-jump;
+ 	animation-duration: 1s;
+ 	animation-iteration-count: 1;
+ 	animation-timing-function: steps(1,end);
+ 	animation-delay: 0s
+ }
+ .dog_catch_duck {/* подстиль для собаки*/
+	 width: 86px;
+	 height: 79px;
+	 bottom: 200px;
+	 animation-name: dog-catch-duck;
+	 animation-duration: 4s;
+	 animation-iteration-count: 1;
+	 animation-timing-function: steps(1,end);
+	 animation-delay: 0s
+ }
+ .dog_laugh {/* подстиль для собаки*/
+	 width: 59px;
+	 height: 79px;
+	 bottom: 200px;
+	 animation-name: dog-laugh;
+	 animation-duration: 4s;
+	 animation-iteration-count: 1;
+	 animation-timing-function: steps(1,end);
+	 animation-delay: 0s
+ }
+@keyframes dog-walk { /* ключевые кадры для прогулки собаки*/
+	0% {
+		background-position: -12px -20px;
+	}
+	25% {
+		background-position: -132px -17px;
+	}
+	50% {
+		background-position: -251px -16px;
+	}
+	75% {
+		background-position: -368px -20px;
+	}
+	100% {
+		background-position: -420px -20px;
+	}
+}
+@keyframes dog-jump { /* ключевые кадры для прыжка собаки*/
+ 	0% {
+ 		background-position: -11px -118px;
+ 	}
+	25% {
+		width: 71px;
+		height: 92px;
+		background-position: -148px -120px;
+ 	}
+	50% {
+		width: 71px;
+		height: 92px;
+		background-position: -148px -120px;
+ 	}
+ 	100% {
+		width: 66px;
+		height: 64px;
+ 		background-position: -270px -134px;
+ 	}
+ }
+@keyframes dog-catch-duck { /* ключевые кадры для появления собаки с уткой*/
+	0% {
+		background-position: -665px -20px;
+	}
+	50% {
+		background-position: -665px -20px;
+	}
+	100% {
+		background-position: -665px -20px;
+	}
+}
+@keyframes dog-laugh { /* ключевые кадры для появления собаки */
+	0% {
+		background-position: -394px -126px;
+	}
+	50% {
+		background-position: -513px -126px;
+	}
+	100% {
+		background-position: -394px -126px;
+	}
+}
+.duck {
+	position: absolute;
+	display: none;
+	left: 0;
+	bottom: 250px;
+}
+.duck_fly {
+	display: block;
+}
+.duck_fly_left, .duck_fly_top_left, .duck_fly_right, .duck_fly_top_right {
+	transition: transform 4s linear;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	animation-timing-function: steps(1,end);
+	animation-delay: 0s
+}
+.duck_fly_left {
+	animation-name: duck-fly-left;
+}
+.duck_fly_top_left {
+	animation-name: duck-fly-top-left;
+}
+.duck_fly_right{
+	animation-name: duck-fly-right;
+}
+.duck_fly_top_right {
+	animation-name: duck-fly-top-right;
+}
+.duck_fly_down {
+	animation-name: duck-fly-down;
+	transition: transform 2s linear;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-timing-function: steps(1,end);
+	animation-delay: 0s
+}
+@keyframes duck-fly-left {
+	0% {
+		width: 69px;
+		height: 50px;
+		background-position: -831px -364px;
+	}
+	50% {
+		width: 69px;
+		height: 41px;
+		background-position: -926px -271px;
+	}
+	100% {
+		width: 69px;
+		height: 50px;
+		background-position: -831px -364px;
+	}
+}
+@keyframes duck-fly-top-left {
+	0% {
+		width: 48px;
+		height: 64px;
+		background-position: -321px -349px;
+	}
+	50% {
+		width: 54px;
+		height: 64px;
+		background-position: -334px -187px;
+	}
+	100% {
+		width: 48px;
+		height: 64px;
+		background-position: -321px -349px;
+	}
+}
+@keyframes duck-fly-right {
+	0% {
+		width: 68px;
+		height: 48px;
+		background-position: -867px -187px;
+	}
+	50% {
+		width: 68px;
+		height: 41px;
+		background-position: -903px -366px;
+	}
+	100% {
+		width: 68px;
+		height: 48px;
+		background-position: -867px -187px;
+	}
+}
+@keyframes duck-fly-top-right {
+	0% {
+		width: 48px;
+		height: 62px;
+		background-position: -283px -186px;
+	}
+	50% {
+		width: 56px;
+		height: 64px;
+		background-position: -264px -348px;
+	}
+	100% {
+		width: 48px;
+		height: 62px;
+		background-position: -283px -186px;
+	}
+}
+@keyframes duck-fly-down  {
+	0% {
+		width: 62px;
+		height: 58px;
+		background-position: -3px -362px;
+	}
+	25% {
+		width: 62px;
+		height: 58px;
+		background-position: -3px -362px;
+	}
+	50% {
+		width: 35px;
+		height: 62px;
+		background-position: -372px -346px;
+	}
+	100% {
+		width: 35px;
+		height: 62px;
+		background-position: -372px -346px;
+	}
+}
