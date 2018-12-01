@@ -151,6 +151,7 @@ html, body {
 .duck {
 	position: absolute;
 	display: none;
+	margin: 10px;
 	left: 0;
 	bottom: 250px;
 }

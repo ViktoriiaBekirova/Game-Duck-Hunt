@@ -1,10 +1,10 @@
-var h = document.querySelector('.text'); // оповещение начала игры
-var p1 = document.querySelector('.text2'); // вы выиграли
-var p2 = document.querySelector('.text3'); // вы проиграли
-var gameWidth = document.querySelector('.container').clientWidth; //зона действия игры
-var gameHeight = document.querySelector('.container').clientHeight; //зона действия игры
-var dog = document.querySelector('.dog');
-var duck = document.querySelector('.duck');
+let h = document.querySelector('.text'); // оповещение начала игры
+let p1 = document.querySelector('.text2'); // вы выиграли
+let p2 = document.querySelector('.text3'); // вы проиграли
+let gameWidth = document.querySelector('.container').clientWidth; //зона действия игры
+let gameHeight = document.querySelector('.container').clientHeight; //зона действия игры
+let dog = document.querySelector('.dog');
+let duck = document.querySelector('.duck');
 
 function dogWalk () { // ф-я запуска прогулки собаки
     dog.classList.add('dog_walk'); // добавляем стиль прогулки
@@ -53,31 +53,38 @@ function duckFlyDown () { // падение утки
     duck.style.transform = 'translate(0px,' + (gameHeight - duck.offsetTop) + 'px)';
 }
 function audiowinner() { // звук выигриша
-    var audio = new Audio(); // Создаём новый элемент Audio
+    let audio = new Audio(); // Создаём новый элемент Audio
     audio.src = 'zvuk-vyigrysha.mp3'; // Указываем путь к звуку
     audio.autoplay = true; // Автоматически запускаем
 }
 function audioloser() { // звук проигрыша
-    var audio = new Audio(); // Создаём новый элемент Audio
+    let audio = new Audio(); // Создаём новый элемент Audio
     audio.src = 'zvuk-proigrysha.mp3'; // Указываем путь к звуку
     audio.autoplay = true; // Автоматически запускаем
 }
-
+let end = false
+function game () {
     h.onclick = function () {
         h.className = 'text1'; // при запуске ф-ии убераем оповещение
         dogWalk();
         setTimeout(dogJump, 8000);
-        var timer1 = setTimeout(duckFlyRight, 11000);
-            timer2 = setTimeout(duckFlyTopRight, 13000);
-            timer3 = setTimeout(duckFlyLeft, 15000);
-            timer4 = setTimeout(duckFlyTopLeft, 17000);
-            timer5 = setTimeout(duckFlyRight, 19000);
-            timer6 = setTimeout(duckFlyTopRight, 21000);
-            timer7 = setTimeout(dogLaugh, 23000); // собака смеется
-            timer8 = setTimeout(function () {
-                p2.className = 'text'; // вы проиграли
-            },23000);
-            timer9 = setTimeout(audioloser, 23000); // звук проигрыша
+        let timer1 = setTimeout(duckFlyRight, 11000);
+        timer2 = setTimeout(duckFlyTopRight, 13000);
+        timer3 = setTimeout(duckFlyLeft, 15000);
+        timer4 = setTimeout(duckFlyTopLeft, 17000);
+        timer5 = setTimeout(duckFlyRight, 19000);
+        timer6 = setTimeout(duckFlyTopRight, 21000);
+        timer7 = setTimeout(dogLaugh, 23000); // собака смеется
+        timer8 = setTimeout(function () {
+            p2.className = 'text'; // вы проиграли
+            end = true
+            console.log(end)
+            setTimeout(function () {
+                location.reload(true); // вы проиграли
+            },6000);
+        },23000);
+        timer9 = setTimeout(audioloser, 23000); // звук проигрыша
+
 
         duck.addEventListener('click', function () { // при клике на утку отключаем таймеры
             clearTimeout(timer1);
@@ -94,9 +101,21 @@ function audioloser() { // звук проигрыша
             audiowinner(); // звук выигрыша
             p1.className = 'text'; // вы выйграли
             setTimeout(dogCatchDuck, 3000); // собака с уткой
-            // console.log('test');
+            end = true
+            console.log(end)
+            setTimeout(function () {
+                location.reload(true); // вы проиграли
+            },10000);
         });
     };
+}
+
+game()
+
+
+
+
+
 
 
 
